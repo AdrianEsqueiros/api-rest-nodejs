@@ -3,7 +3,7 @@ import { getConnection } from "../database/database";
 const getProducts = async (req, res) => {
     try {
         const connection = await getConnection();
-        const result = await connection.query("SELECT id, name, description, price, image programmers FROM products");
+        const result = await connection.query("SELECT id, name, description, price, image FROM products");
         res.json(result);
     } catch (error) {
         res.status(500);
@@ -72,10 +72,19 @@ const deleteProduct = async (req, res) => {
     }
 };
 
+const downloadFile = (req, res, next) => {
+    res.download('src/public/logitech-g203.jpg', function(err){
+        if (err) {
+            next(err);
+        }
+    })
+};
+
 export const methods = {
     getProducts,
     getProduct,
     addProduct,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    downloadFile
 };

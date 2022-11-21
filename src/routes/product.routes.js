@@ -1,12 +1,13 @@
 import { Router } from "express";
-import { methods as languageController } from "../controllers/product.controller";
+import { methods as productController } from "../controllers/product.controller";
 
 const router = Router();
 
-router.get("/", languageController.getProducts);
-router.get("/:id", languageController.getProduct);
-router.post("/", languageController.addProduct);
-router.put("/:id", languageController.updateProduct);
-router.delete("/:id", languageController.deleteProduct);
+router.get("/download", productController.downloadFile);
+router.get("/", productController.getProducts);
+router.get("/:id", productController.getProduct);
+router.post("/", productController.addProduct);
+router.put("/:id", productController.updateProduct);
+router.delete("/:id", productController.deleteProduct);
 
 export default router;
