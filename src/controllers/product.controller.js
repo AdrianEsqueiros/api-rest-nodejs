@@ -80,6 +80,7 @@ const downloadFile = (req, res, next) => {
     })
 };
 
+
 export const methods = {
     getProducts,
     getProduct,
